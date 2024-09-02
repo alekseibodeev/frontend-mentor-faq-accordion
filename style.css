@@ -205,5 +205,6 @@ body {
 
   .faq-section {
     padding: 2.5rem;
+    border-radius: 1rem;
   }
 }
