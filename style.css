@@ -149,43 +149,22 @@ body {
   background-image: url("./assets/images/icon-minus.svg");
 }
 
-.accordion-item__content {
-  --animation-duration: 0.25s;
-  --animation-function: ease;
-
+.accordion-item__content-wrapper {
   padding-block-end: 1.25rem;
   grid-area: content;
   color: var(--clr-grayish-purple-600);
   font-size: var(--fs-300);
-  display: none;
-  transform-origin: top;
-  transition: display var(--animation-duration) var(--animation-function)
-    allow-discrete;
-  animation: collapse var(--animation-duration) var(--animation-function)
-    forwards;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
 }
 
-.accordion-item__trigger:checked ~ .accordion-item__content {
-  display: block;
-  animation: expand var(--animation-duration) var(--animation-function) forwards;
+.accordion-item__trigger:checked ~ .accordion-item__content-wrapper {
+  grid-template-rows: 1fr;
 }
 
-@keyframes collapse {
-  from {
-    transform: scaleY(1);
-  }
-  to {
-    transform: scaleY(0);
-  }
-}
-
-@keyframes expand {
-  from {
-    transform: scaleY(0);
-  }
-  to {
-    transform: scaleY(1);
-  }
+.accordion-item__content-inner {
+  overflow: hidden;
 }
 
 @media screen and (min-width: 38rem) {
